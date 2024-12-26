@@ -1,0 +1,17 @@
+# Exported from Render on 2024-12-26T18:23:15Z
+services:
+- type: web
+  name: platonus-frontend
+  runtime: image
+  image:
+    url: docker.io/alik007/platonus-frontend:v1.0.2
+  plan: free
+  region: frankfurt
+- type: web
+  name: platonus-backend
+  runtime: image
+  image:
+    url: docker.io/alik007/platonus-backend:v1.0.2
+  plan: free
+  region: frankfurt
+version: "1"
