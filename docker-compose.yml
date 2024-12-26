@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  frontend:
+    build:
+      context: docker.io/alik007/platonus-frontend:v1.0.2
+      dockerfile: Dockerfile  # Specify the Dockerfile in the frontend repo if building from source
+    container_name: frontend
+    ports:
+      - "80:80"  # Expose the frontend on port 80
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: docker.io/alik007/platonus-backend:v1.0.2
+      dockerfile: Dockerfile  # Specify the Dockerfile in the backend repo if building from source
+    container_name: backend
+    environment:
+      - SERVER_PORT=8081  # Set the backend port to 8081
+    ports:
+      - "8081:8081"  # Expose port 8081 externally
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
